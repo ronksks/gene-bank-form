@@ -2,8 +2,7 @@
 
 import React, {useState, useEffect} from "react";
 import "../Styles/SampleFormStyle.css";
-
-// import Html5QrcodePlugin from "./Html5QrcodePlugin.jsx";
+import axios from 'axios';
 import SampleBag from "./SampleBag";
 import {Button, Form} from "react-bootstrap";
 import sampleBag from "./SampleBag";
@@ -68,20 +67,34 @@ const SampleForm = () => {
         return uniqueDuplicates;
     };
 
+    // async function handleSubmit(event) {
+    //     try {
+    //         event.preventDefault();
+    //         const uniqueDuplicates = checkIfAllBarcodesUnique();
+    //         if (uniqueDuplicates.length === 0) {
+    //             const response = await fetch("http://localhost:5000/gene-form", {
+    //                 method: "POST",
+    //                 headers: {
+    //                     "Content-Type": "application/json"
+    //                 },
+    //                 body: JSON.stringify(sampleBags)
+    //             });
+    //             const data = await response.json();
+    //             alert("Form submitted successfully")
+    //         } else {
+    //             alert("Duplicate barcodes found: " + uniqueDuplicates.join(", "));
+    //         }
+    //     } catch (error) {
+    //         alert(error);
+    //     }
+    // }
     async function handleSubmit(event) {
         try {
             event.preventDefault();
             const uniqueDuplicates = checkIfAllBarcodesUnique();
             if (uniqueDuplicates.length === 0) {
-                const response = await fetch("http://localhost:5000/gene-form", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify(sampleBags)
-                });
-                const data = await response.json();
-                alert("Form submitted successfully")
+                const response = await axios.post("http://localhost:5000/gene-form", sampleBags);
+                alert("Form submitted successfully");
             } else {
                 alert("Duplicate barcodes found: " + uniqueDuplicates.join(", "));
             }
