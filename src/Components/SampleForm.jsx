@@ -66,7 +66,7 @@ const SampleForm = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        alert(data)
+        alert(data.stringify)
       })
       .catch((error) => {
         alert(error)
