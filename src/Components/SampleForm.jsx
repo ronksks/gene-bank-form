@@ -66,10 +66,10 @@ const SampleForm = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        // handle response from backend
+        alert(data)
       })
       .catch((error) => {
-        // handle error
+        alert(error)
       });
   }
   return (
