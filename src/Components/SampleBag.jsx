@@ -24,17 +24,18 @@ function SampleBag(props) {
     setBagId(event.target.value);
     props.onChange({ ...props.bagData, bagId: event.target.value });
   };
+  const handleBagBarcodeChange = (event) => {
+    setBagBarcode(event.target.value);
+    // props.barcodeScan(event.target.value)
+    props.onChange({ ...props.bagData, bagBarcode: event.target.value });
+    setScannerHidden(true);
+  };
 
   const handleBagWeightChange = (event) => {
     setBagWeight(event.target.value);
     props.onChange({ ...props.bagData, bagWeight: event.target.value });
   };
 
-  const handleBagBarcodeChange = (event) => {
-    setBagBarcode(event.target.value);
-    props.onChange({ ...props.bagData, bagBarcode: event.target.value });
-    setScannerHidden(true);
-  };
 
   const handleRemoveSampleBag = () => {
     props.removeSampleBag(props.bagData.bagId);
@@ -81,6 +82,7 @@ function SampleBag(props) {
             type="text"
             value={bagWeight}
             onChange={handleBagWeightChange}
+            disabled={!bagBarcode}
           />
         </label>
         {scannerHidden && ( // show the button when the scanner is hidden
