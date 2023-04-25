@@ -39,7 +39,7 @@ function SampleBag(props) {
   const handleRemoveSampleBag = () => {
     props.removeSampleBag(props.bagData.bagId);
   };
-
+//TODO add a sample ID
   return (
     <div className="sample-bag">
       <div className="form-group">
