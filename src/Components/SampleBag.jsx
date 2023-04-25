@@ -52,14 +52,7 @@ function SampleBag(props) {
             disabled
           />
         </label>
-        <label>
-          Bag Weight:
-          <input
-            type="text"
-            value={bagWeight}
-            onChange={handleBagWeightChange}
-          />
-        </label>
+
         <label>
           Bag Barcode:
           <input
@@ -82,6 +75,14 @@ function SampleBag(props) {
             </div>
           </div>
         )}
+          <label>
+          Bag Weight:
+          <input
+            type="text"
+            value={bagWeight}
+            onChange={handleBagWeightChange}
+          />
+        </label>
         {scannerHidden && ( // show the button when the scanner is hidden
           <button
             className="btn"
