@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/gene-bank-form/static/css/main.cb06c756.css",
-    "main.js": "/gene-bank-form/static/js/main.92c29bd2.js",
-    "index.html": "/gene-bank-form/index.html",
-    "main.cb06c756.css.map": "/gene-bank-form/static/css/main.cb06c756.css.map",
-    "main.92c29bd2.js.map": "/gene-bank-form/static/js/main.92c29bd2.js.map"
+    "main.css": "/static/css/main.cb06c756.css",
+    "main.js": "/static/js/main.d22f1aa0.js",
+    "index.html": "/index.html",
+    "main.cb06c756.css.map": "/static/css/main.cb06c756.css.map",
+    "main.d22f1aa0.js.map": "/static/js/main.d22f1aa0.js.map"
   },
   "entrypoints": [
     "static/css/main.cb06c756.css",
-    "static/js/main.92c29bd2.js"
+    "static/js/main.d22f1aa0.js"
   ]
 }
