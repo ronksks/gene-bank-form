@@ -67,34 +67,20 @@ const SampleForm = () => {
         return uniqueDuplicates;
     };
 
-    // async function handleSubmit(event) {
-    //     try {
-    //         event.preventDefault();
-    //         const uniqueDuplicates = checkIfAllBarcodesUnique();
-    //         if (uniqueDuplicates.length === 0) {
-    //             const response = await fetch("http://localhost:5000/gene-form", {
-    //                 method: "POST",
-    //                 headers: {
-    //                     "Content-Type": "application/json"
-    //                 },
-    //                 body: JSON.stringify(sampleBags)
-    //             });
-    //             const data = await response.json();
-    //             alert("Form submitted successfully")
-    //         } else {
-    //             alert("Duplicate barcodes found: " + uniqueDuplicates.join(", "));
-    //         }
-    //     } catch (error) {
-    //         alert(error);
-    //     }
-    // }
     async function handleSubmit(event) {
         try {
             event.preventDefault();
             const uniqueDuplicates = checkIfAllBarcodesUnique();
             if (uniqueDuplicates.length === 0) {
-                const response = await axios.post("192.168.68.50:5000/gene-form", sampleBags);
-                alert("Form submitted successfully");
+                const response = await fetch("192.168.68.1:5000/gene-form", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(sampleBags)
+                });
+                const data = await response.json();
+                alert("Form submitted successfully")
             } else {
                 alert("Duplicate barcodes found: " + uniqueDuplicates.join(", "));
             }
@@ -102,6 +88,20 @@ const SampleForm = () => {
             alert(error);
         }
     }
+    // async function handleSubmit(event) {
+    //     try {
+    //         event.preventDefault();
+    //         const uniqueDuplicates = checkIfAllBarcodesUnique();
+    //         if (uniqueDuplicates.length === 0) {
+    //             const response = await axios.post("192.168.68.1:5000/gene-form", sampleBags);
+    //             alert("Form submitted successfully");
+    //         } else {
+    //             alert("Duplicate barcodes found: " + uniqueDuplicates.join(", "));
+    //         }
+    //     } catch (error) {
+    //         alert(error);
+    //     }
+    // }
 
 
     return (
