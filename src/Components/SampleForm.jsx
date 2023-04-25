@@ -55,23 +55,22 @@ const SampleForm = () => {
   //   e.preventDefault();
   //   console.log(sampleBags);
   // };
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
+  try {
     event.preventDefault();
-  fetch("http://localhost:5000/gene-form", {
+    const response = await fetch("http://localhost:5000/gene-form", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify(sampleBags)
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        alert(data.stringify)
-      })
-      .catch((error) => {
-        alert(error)
-      });
+    });
+    const data = await response.json();
+  } catch (error) {
+    alert(error);
   }
+}
+
   return (
     <div className="form-container">
       <h2>Sample Form</h2>
