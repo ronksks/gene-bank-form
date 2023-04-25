@@ -93,7 +93,7 @@ const SampleForm = () => {
             event.preventDefault();
             const uniqueDuplicates = checkIfAllBarcodesUnique();
             if (uniqueDuplicates.length === 0) {
-                const response = await axios.post("http://localhost:5000/gene-form", sampleBags);
+                const response = await axios.post("192.168.68.50:5000/gene-form", sampleBags);
                 alert("Form submitted successfully");
             } else {
                 alert("Duplicate barcodes found: " + uniqueDuplicates.join(", "));
