@@ -2,7 +2,6 @@
 
 import React, {useState, useEffect} from "react";
 import "../Styles/SampleFormStyle.css";
-import axios from 'axios';
 import SampleBag from "./SampleBag";
 import {Button, Form} from "react-bootstrap";
 import sampleBag from "./SampleBag";
@@ -72,7 +71,7 @@ const SampleForm = () => {
             event.preventDefault();
             const uniqueDuplicates = checkIfAllBarcodesUnique();
             if (uniqueDuplicates.length === 0) {
-                const response = await fetch("192.168.68.1:5000/gene-form", {
+                const response = await fetch("http://localhost:5000/gene-form", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
@@ -88,21 +87,6 @@ const SampleForm = () => {
             alert(error);
         }
     }
-    // async function handleSubmit(event) {
-    //     try {
-    //         event.preventDefault();
-    //         const uniqueDuplicates = checkIfAllBarcodesUnique();
-    //         if (uniqueDuplicates.length === 0) {
-    //             const response = await axios.post("192.168.68.1:5000/gene-form", sampleBags);
-    //             alert("Form submitted successfully");
-    //         } else {
-    //             alert("Duplicate barcodes found: " + uniqueDuplicates.join(", "));
-    //         }
-    //     } catch (error) {
-    //         alert(error);
-    //     }
-    // }
-
 
     return (
         <div className="form-container">

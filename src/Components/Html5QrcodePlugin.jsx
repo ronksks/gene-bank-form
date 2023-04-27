@@ -3,12 +3,21 @@ import { useEffect } from "react";
 
 // Creates the configuration object for Html5QrcodeScanner.
 const createConfig = (props) => {
+  let qrboxFunction = function(viewfinderWidth, viewfinderHeight) {
+    let minEdgePercentage = 0.7; // 70%
+    let minEdgeSize = Math.min(viewfinderWidth, viewfinderHeight);
+    let qrboxSize = Math.floor(minEdgeSize * minEdgePercentage);
+    return {
+        width: qrboxSize,
+        height: qrboxSize
+    };
+}
   let config = {};
   if (props.fps) {
     config.fps = 100;
   }
   if (props.qrbox) {
-    config.qrbox = props.qrbox;
+    config.qrbox = qrboxFunction;
     // config.qrbox = {
     //   width: window.screen.width < 600 ? 200 : 300,
     //   height: window.screen.width < 600 ? 100 : 100,
@@ -24,6 +33,7 @@ const createConfig = (props) => {
 };
 
 const Html5QrcodePlugin = (props) => {
+
   useEffect(() => {
     // when component mounts
     const config = createConfig(props);
