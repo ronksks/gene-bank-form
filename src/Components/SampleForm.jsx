@@ -15,7 +15,7 @@ const SampleForm = () => {
 
 
     useEffect(() => {
-        console.log("useEffect fires");
+        console.log("sampleBags changed");
         setTotalWeight(getTotalSampleBagWeight());
     }, [sampleBags]);
 
